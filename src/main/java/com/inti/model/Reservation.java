@@ -1,16 +1,35 @@
 package com.inti.model;
 
 import java.time.LocalDate;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 
 
+@Entity
+@Table
 public class Reservation {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idReservation;
 	private LocalDate date;
-	
 	private int numero;
 
+	@ManyToOne
+	@JoinColumn(name = "idVol")
+	private Vol vol;
+	@ManyToOne
+	@JoinColumn(name = "idClient")
+	private Client client;
+	@ManyToOne
+	@JoinColumn(name = "idPassager")
+	private Passager passager;
 	
 	public Reservation() {}
 	
@@ -60,6 +79,30 @@ public class Reservation {
 
 	public void setNumero(int numero) {
 		this.numero = numero;
+	}
+
+	public Vol getVol() {
+		return vol;
+	}
+
+	public void setVol(Vol vol) {
+		this.vol = vol;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public Passager getPassager() {
+		return passager;
+	}
+
+	public void setPassager(Passager passager) {
+		this.passager = passager;
 	}
 
 	

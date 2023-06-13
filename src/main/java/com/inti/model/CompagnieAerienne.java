@@ -1,9 +1,30 @@
 package com.inti.model;
 
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class CompagnieAerienne {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCompagnieAerienne;
 	private String nom;
+	
+	
+	 @ManyToMany()
+	 @JoinTable(name = "vol_compagnie",
+			 	joinColumns= @JoinColumn(name = "idCompagnieAerienne"),
+			 	inverseJoinColumns= @JoinColumn (name="idVol"))
+	private List<Vol> listeVol;
 	
 	public CompagnieAerienne() {
 		super();
@@ -33,6 +54,14 @@ public class CompagnieAerienne {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public List<Vol> getListeVol() {
+		return listeVol;
+	}
+
+	public void setListeVol(List<Vol> listeVol) {
+		this.listeVol = listeVol;
 	}
 
 	@Override

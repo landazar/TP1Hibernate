@@ -1,9 +1,26 @@
 package com.inti.model;
 
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Ville {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idVille;
 	private String nom;
+	
+	@OneToMany(mappedBy = "ville")
+	private List<AeroportArrivee> listeAeroportArrivee;
+	@OneToMany(mappedBy = "ville")
+	private List<AeroportDepart> listeAeroportDepart;
 	
 	public Ville() {
 		super();
@@ -34,6 +51,22 @@ public class Ville {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public List<AeroportArrivee> getListeAeroportArrivee() {
+		return listeAeroportArrivee;
+	}
+
+	public void setListeAeroportArrivee(List<AeroportArrivee> listeAeroportArrivee) {
+		this.listeAeroportArrivee = listeAeroportArrivee;
+	}
+
+	public List<AeroportDepart> getListeAeroportDepart() {
+		return listeAeroportDepart;
+	}
+
+	public void setListeAeroportDepart(List<AeroportDepart> listeAeroportDepart) {
+		this.listeAeroportDepart = listeAeroportDepart;
 	}
 
 	@Override
