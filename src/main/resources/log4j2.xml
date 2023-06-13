@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<!-- Console Appender -->
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="[%t] %-5p | %-60c | %m (%F:%L)%n" />
+		</Console>
+		<!-- File Appender -->
+		<File name="File" fileName="app.log">
+			<PatternLayout
+				pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" />
+		</File>
+	</Appenders>
+	<Loggers>
+		<Logger name="org.hibernate" level="info" additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+		<Logger name="org.hibernate.SQL" level="debug"
+			additivity="false">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Logger>
+		<Logger name="org.hibernate.type.descriptor.sql" level="trace"
+			additivity="false">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Logger>
+		<Logger name="com.inti" level="debug"
+			additivity="false">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Logger>
+		<Root level="error">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Root>
+	</Loggers>
+</Configuration>
