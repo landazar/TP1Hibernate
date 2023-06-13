@@ -1,5 +1,5 @@
 package com.inti.model;
-
+//commentaire
 public class Client {
 
 	private int idClient;
