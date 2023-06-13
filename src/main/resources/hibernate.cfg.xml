@@ -12,5 +12,15 @@
         
         <property name="hibernate.hbm2ddl.auto">update</property>
         
+        <mapping class="com.inti.model.AeroportArrivee"/>
+        <mapping class="com.inti.model.AeroportDepart"/>
+        <mapping class="com.inti.model.Client"/>
+        <mapping class="com.inti.model.CompagnieAerienne"/>
+        <mapping class="com.inti.model.InfosEscale"/>
+        <mapping class="com.inti.model.Passager"/>
+        <mapping class="com.inti.model.Reservation"/>
+        <mapping class="com.inti.model.Ville"/>
+        <mapping class="com.inti.model.Vol"/>
+        
     </session-factory>
 </hibernate-configuration>

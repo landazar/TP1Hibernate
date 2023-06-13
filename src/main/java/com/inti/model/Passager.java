@@ -1,9 +1,14 @@
 package com.inti.model;
 
+
+
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +20,9 @@ public class Passager {
 	private int idPassager;
 	private String nom;
 	private String prenom;
+	
+	@OneToMany(mappedBy = "passager")
+	private List<Reservation> listeReservation;
 	
 	public Passager() {
 		super();
@@ -55,6 +63,14 @@ public class Passager {
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
+	}
+
+	public List<Reservation> getListeReservation() {
+		return listeReservation;
+	}
+
+	public void setListeReservation(List<Reservation> listeReservation) {
+		this.listeReservation = listeReservation;
 	}
 
 	@Override
