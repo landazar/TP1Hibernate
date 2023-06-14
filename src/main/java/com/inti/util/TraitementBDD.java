@@ -14,6 +14,7 @@ import com.inti.model.Reservation;
 import com.inti.model.AeroportArrivee;
 import com.inti.model.AeroportDepart;
 import com.inti.model.CompagnieAerienne;
+import com.inti.model.InfosEscale;
 import com.inti.model.Ville;
 import com.inti.model.Vol;
 
@@ -61,14 +62,17 @@ public class TraitementBDD {
 	}
 
 	public void creerVol(LocalDate dateDepart, String heureDepart, LocalDate dateArrivee, String heureArrivee, String nomCompagnie,
-						String nomAeroportDepart, String nomAeroportArrivee, String nomVilleDepart, String nomVilleArrivee)
+						String nomAeroportDepart, String nomAeroportArrivee, String nomVilleDepart, String nomVilleArrivee, String escale,
+						String heureD, String heureA, String aeroportEscale)
 	{
 		/**
 		 * Fonction a amélioré en mettant une liste d'aéroport et une liste de compagnie pour qu'on puisse choisir
-		 * sans forcément créer plusiuers fois la même compagnie ou aéroport dans la base de données
+		 * sans forcément créer plusieurs fois la même compagnie ou aéroport dans la base de données
 		 */
 		try {
-			
+			List<InfosEscale> listeInfos = null;
+			List<AeroportArrivee> listeAeroportA = null;
+			List<AeroportDepart> listeAeroportD = null;
 			session.beginTransaction();
 			
 			logger.debug("Début des transactions pour enregistrer un vol");
@@ -85,6 +89,17 @@ public class TraitementBDD {
 			
 			Ville va1 = new Ville(nomVilleArrivee);
 			
+//			if(escale.equals("Escale"))
+//			{
+//				listeInfos = List.of(new InfosEscale(heureA, heureD));
+//				listeAeroportA = List.of(new AeroportArrivee(aeroportEscale));
+//				listeAeroportD = List.of(new AeroportDepart(aeroportEscale));
+//				listeInfos.setListeAeroportArrivee(listeAeroportA);
+//				ad2.setListeInfos(listeInfos);
+//				aa2.setListeInfos(listeInfos);
+//				
+//				v1.setListeInfos(listeInfos);
+//			}
 			
 			v1.setListeCompagnie(listeCompagnie);
 			

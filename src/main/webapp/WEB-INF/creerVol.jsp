@@ -8,6 +8,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
 integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" 
 crossorigin="anonymous">
+<script type="text/javascript"><%@ include file="/WEB-INF/js/script.js" %></script>
 </head>
 <body>
 
@@ -97,23 +98,24 @@ crossorigin="anonymous">
 	                    	<input type="text" name="villeArrivee" class="form-control" />
 	                    </div>
 	                  </div>
+	                  
+	                  <div class="mb-3">
+						    <div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="escale" value="Escale" onclick="afficherEscale()">
+						  <label class="form-check-label" for="Escale">Escale</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="escale" value="Sans escale" onclick="afficherSansEscale()">
+						  <label class="form-check-label" for="sansEscale">Sans escale</label>
+						</div>
+					   </div>
+					   
+					   <div id="type"></div>
 	
 	                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
 	                    <button type="submit" class="btn btn-primary btn-lg">Enregistrer</button>
 	                    <button type="reset" class="btn btn-primary btn-lg">Annuler</button>
 	                  </div>
-	                  
-	                   <div class="mb-3">
-						    <div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="typeP" value="CB" onclick="afficherCB()">
-						  <label class="form-check-label" for="typeP1">Escale</label>
-						</div>
-						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="typeP" value="Paypal" onclick="afficherPaypal()">
-						  <label class="form-check-label" for="typeP2">Sans escale</label>
-						</div>
-					   </div>
-	
 	                </form>
 	
 	              </div>

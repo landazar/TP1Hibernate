@@ -43,7 +43,7 @@ public class Vol {
 	 @JoinColumn(name = "idAeroportD")
 	private AeroportDepart aeroportDepart;
 	 
-	 @ManyToMany
+	 @ManyToMany(cascade = CascadeType.ALL)
 	 @JoinTable(name = "vol_compagnie",
 	 	joinColumns= @JoinColumn(name = "idVol"),
 	 	inverseJoinColumns= @JoinColumn (name="idInfosEscale"))
