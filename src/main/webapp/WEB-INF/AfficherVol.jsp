@@ -18,7 +18,8 @@
 
 	<section style="background-color: #eee;">
 		<div class="text-center container py-5">
-			<c:forEach var="i" begin="0" end="${ listeV.size() - 1 }" step="1">
+			<c:forEach var="i" begin="0" end="${ listeV.size() - 1 }" step="3">
+			
 				<div class="row">
 
 					<c:if test="${ i <= listeV.size() - 1 }">
@@ -44,15 +45,15 @@
 									</div>
 								</div>
 								<div class="card-body">
-									<p class="card-title mb-3"><c:out value="${ listeV.get(i).getCompagnieAerienne().getNom() }" /></p>
+<%-- 									<p class="card-title mb-3"><c:out value="${ listeV.get(i).getListeCompagnie().get(i).nom }" /></p> --%>
 									<span class="card-title mb-3"><c:out value="${ listeV.get(i).getAeroportDepart().getNom() }" /></span>
-									<span class="card-title mb-3"><c:out value="${ listeV.get(i).getVille().getNom() }" /></span>
+									<span class="card-title mb-3"><c:out value="${ listeV.get(i).getAeroportDepart().getVille().getNom() }" /></span>
 									<p>
 										<span class="card-title mb-3"><c:out value="${ listeV.get(i).getDateDepart() }" /></span>
 										<span class="card-title mb-3"><c:out value="${ listeV.get(i).getHeureDepart() }" /></span>
 									</p>
 									<span class="card-title mb-3"><c:out value="${ listeV.get(i).getAeroportArrivee().getNom() }" /></span>
-									<span class="card-title mb-3"><c:out value="${ listeV.get(i).getVille().getNom() }" /></span>
+									<span class="card-title mb-3"><c:out value="${ listeV.get(i).getAeroportArrivee().getVille().getNom() }" /></span>
 									<p>
 										<span class="card-title mb-3"><c:out value="${ listeV.get(i).getDateArrivee() }" /></span>
 										<span class="card-title mb-3"><c:out value="${ listeV.get(i).getHeureArrivee() }" /></span>
@@ -84,15 +85,15 @@
 									</div>
 								</div>
 								<div class="card-body">
-									<p class="card-title mb-3"><c:out value="${ listeV.get(i + 1).getCompagnieAerienne().getNom() }" /></p>
+<%-- 									<p class="card-title mb-3"><c:out value="${ listeV.get(i + 1).getListeCompagnie().get(i).nom }" /></p> --%>
 									<span class="card-title mb-3"><c:out value="${ listeV.get(i + 1).getAeroportDepart().getNom() }" /></span>
-									<span class="card-title mb-3"><c:out value="${ listeV.get(i + 1).getVille().getNom() }" /></span>
+									<span class="card-title mb-3"><c:out value="${ listeV.get(i + 1).getAeroportDepart().getVille().getNom() }" /></span>
 									<p>
 										<span class="card-title mb-3"><c:out value="${ listeV.get(i + 1).getDateDepart() }" /></span>
 										<span class="card-title mb-3"><c:out value="${ listeV.get(i + 1).getHeureDepart() }" /></span>
 									</p>
 									<span class="card-title mb-3"><c:out value="${ listeV.get(i + 1).getAeroportArrivee().getNom() }" /></span>
-									<span class="card-title mb-3"><c:out value="${ listeV.get(i + 1).getVille().getNom() }" /></span>
+									<span class="card-title mb-3"><c:out value="${ listeV.get(i + 1).getAeroportArrivee().getVille().getNom() }" /></span>
 									<p>
 										<span class="card-title mb-3"><c:out value="${ listeV.get(i + 1).getDateArrivee() }" /></span>
 										<span class="card-title mb-3"><c:out value="${ listeV.get(i + 1).getHeureArrivee() }" /></span>
@@ -124,58 +125,18 @@
 									</div>
 								</div>
 								<div class="card-body">
-									<p class="card-title mb-3"><c:out value="${ listeV.get(i + 2).getCompagnieAerienne().getNom() }" /></p>
+<%-- 									<p class="card-title mb-3"><c:out value="${ listeV.get(i + 2).getListeCompagnie().get(i).nom }" /></p> --%>
 									<span class="card-title mb-3"><c:out value="${ listeV.get(i + 2).getAeroportDepart().getNom() }" /></span>
-									<span class="card-title mb-3"><c:out value="${ listeV.get(i + 2).getVille().getNom() }" /></span>
+									<span class="card-title mb-3"><c:out value="${ listeV.get(i + 2).getAeroportDepart().getVille().getNom() }" /></span>
 									<p>
 										<span class="card-title mb-3"><c:out value="${ listeV.get(i + 2).getDateDepart() }" /></span>
 											<span class="card-title mb-3"><c:out value="${ listeV.get(i + 2).getHeureDepart() }" /></span>
 									</p>
 									<span class="card-title mb-3"><c:out value="${ listeV.get(i + 2).getAeroportArrivee().getNom() }" /></span>
-									<span class="card-title mb-3"><c:out value="${ listeV.get(i + 2).getVille().getNom() }" /></span>
+									<span class="card-title mb-3"><c:out value="${ listeV.get(i + 2).getAeroportArrivee().getVille().getNom() }" /></span>
 									<p>
 										<span class="card-title mb-3"><c:out value="${ listeV.get(i + 2).getDateArrivee() }" /></span>
 										<span class="card-title mb-3"><c:out value="${ listeV.get(i + 2).getHeureArrivee() }" /></span>
-									</p>
-								</div>
-							</div>
-						</div>
-					</c:if>
-					<c:if test="${ i + 3 <= listeV.size() - 1 }">
-						<div class="col-lg-4 col-md-12 mb-4">
-							<div class="card">
-								<div
-									class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-									data-mdb-ripple-color="light">
-									<img
-										src="https://static.vecteezy.com/ti/vecteur-libre/p3/4879681-icone-d-un-avion-decollage-gratuit-vectoriel.jpg"
-										class="w-100" />
-									<div class="mask">
-										<div
-											class="d-flex justify-content-start align-items-end h-100">
-											<h5>
-												<span class="badge bg-primary ms-2"><c:out value="${ listeV.get(i + 3).idVol }" /></span>
-											</h5>
-										</div>
-									</div>
-									<div class="hover-overlay">
-										<div class="mask"
-											style="background-color: rgba(251, 251, 251, 0.15);"></div>
-									</div>
-								</div>
-								<div class="card-body">
-									<p class="card-title mb-3"><c:out value="${ listeV.get(i + 3).getCompagnieAerienne().getNom() }" /></p>
-									<span class="card-title mb-3"><c:out value="${ listeV.get(i + 3).getAeroportDepart().getNom() }" /></span>
-									<span class="card-title mb-3"><c:out value="${ listeV.get(i + 3).getVille().getNom() }" /></span>
-									<p>
-										<span class="card-title mb-3"><c:out value="${ listeV.get(i + 3).getDateDepart() }" /></span>
-											<span class="card-title mb-3"><c:out value="${ listeV.get(i + 3).getHeureDepart() }" /></span>
-									</p>
-									<span class="card-title mb-3"><c:out value="${ listeV.get(i + 3).getAeroportArrivee().getNom() }" /></span>
-									<span class="card-title mb-3"><c:out value="${ listeV.get(i + 3).getVille().getNom() }" /></span>
-									<p>
-										<span class="card-title mb-3"><c:out value="${ listeV.get(i + 3).getDateArrivee() }" /></span>
-										<span class="card-title mb-3"><c:out value="${ listeV.get(i + 3).getHeureArrivee() }" /></span>
 									</p>
 								</div>
 							</div>

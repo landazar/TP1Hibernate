@@ -15,7 +15,7 @@ import com.inti.util.TraitementBDD;
 /**
  * Servlet implementation class AfficherVol
  */
-@WebServlet("/affichervol")
+@WebServlet("/AfficherVol")
 public class AfficherVolServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
