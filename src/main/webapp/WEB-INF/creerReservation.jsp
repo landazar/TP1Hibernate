@@ -58,7 +58,7 @@
     
     <br>
     
-    <form action="post">
+    <form method="post">
         <button type="submit">Confirmer la réservation</button>
     </form>
 </body>
