@@ -21,7 +21,7 @@ public class Vol {
 
 	 @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idVol;
+	 private int idVol;
 	 private LocalDate dateDepart;
 	 private String heureDepart;
 	 private LocalDate dateArrivee;

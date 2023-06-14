@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.inti.util.TraitementBDD;
+
 
 
 @Entity
@@ -19,7 +21,6 @@ public class Reservation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idReservation;
 	private LocalDate date;
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int numero;
 
 	@ManyToOne
@@ -47,10 +48,7 @@ public class Reservation {
 		this.date = date;
 		this.numero = numero;
 	}
-
-
-
-
+	
 
 
 	@Override

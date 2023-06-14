@@ -1,6 +1,8 @@
 package com.inti.servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,7 +15,10 @@ import org.apache.logging.log4j.*;
 import org.hibernate.Session;
 
 import com.inti.model.Client;
+import com.inti.model.Reservation;
+import com.inti.model.Vol;
 import com.inti.util.HibernateUtil;
+import com.inti.util.TraitementBDD;
 
 /**
  * 
@@ -30,7 +35,7 @@ public class CreerReservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private Logger logger = LogManager.getLogger();
-       
+	TraitementBDD tbdd = new TraitementBDD();   
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -48,6 +53,28 @@ public class CreerReservationServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		try {
+			
+			session.beginTransaction();
+			
+
+			Vol vol = tbdd.getVol(Integer.parseInt(request.getParameter("idVol")));
+			
+			request.setAttribute("vol", vol);
+			
+			session.getTransaction().commit();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			logger.error("Erreur d'enregistrement d'une réservation !");
+			
+			session.getTransaction().rollback();
+		}
+
+		
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/creerReservation.jsp").forward(request, response);
 		
@@ -68,15 +95,17 @@ public class CreerReservationServlet extends HttpServlet {
 			
 			logger.debug("Début des transactions pour insérer un client");
 			
-			Client c1 = new Client(request.getParameter("prenom"), request.getParameter("nom"), 
-					request.getParameter("adresse"), Integer.parseInt(request.getParameter("tel")),  request.getParameter("email"));
+			Client client1 = tbdd.getClient(Integer.parseInt(request.getParameter("idClient")));
 			
+			Reservation r1 = new Reservation(LocalDate.now(), Integer.parseInt( request.getParameter("idVol")));
+		
+			client1.getListeReservation().add(r1);
 			
-			
-			session.save(c1);
-			
-			
+				
 			session.getTransaction().commit();
+			
+			request.setAttribute("idRes", r1.getIdReservation());			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/confirmationReservation.jsp").forward(request, response);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

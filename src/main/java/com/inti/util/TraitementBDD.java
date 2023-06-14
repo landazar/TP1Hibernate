@@ -4,6 +4,7 @@ package com.inti.util;
 import java.util.ArrayList;
 import java.time.LocalDate;
 
+
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -13,18 +14,21 @@ import org.hibernate.Session;
 import com.inti.model.Reservation;
 import com.inti.model.AeroportArrivee;
 import com.inti.model.AeroportDepart;
+import com.inti.model.Client;
 import com.inti.model.CompagnieAerienne;
 import com.inti.model.InfosEscale;
 import com.inti.model.Ville;
 import com.inti.model.Vol;
 
-
+import com.inti.model.Vol;
 
 public class TraitementBDD {
-	private static final Logger logger = LogManager.getLogger();
 	
-	private Session session;
+    private Session session;
 	
+
+    private Logger logger = LogManager.getLogger();
+
 	public TraitementBDD() {
 		session = HibernateUtil.getSessionFactory().openSession();
 	}
@@ -60,6 +64,93 @@ public class TraitementBDD {
 			session.getTransaction().rollback();
 		}	
 	}
+
+
+    public List<Vol> getListeVol() {
+    	
+        List<Vol> listeV = new ArrayList<>();
+        try {
+            session.beginTransaction();
+
+            listeV = session.createNativeQuery("SELECT * FROM Vol", Vol.class).list();
+
+            logger.debug("Récupération de la liste des vols");
+
+            session.getTransaction().commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            logger.debug("Erreur de récupération des vols");
+
+            session.getTransaction().rollback();
+        }
+
+        return listeV;
+    }
+
+    public void deleteVol(int id) {
+        try {
+            session.beginTransaction();
+
+            Vol v1 = session.load(Vol.class, id);
+            session.delete(v1);
+
+            logger.debug("Suppression du vol : " + v1);
+
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            logger.debug("Erreur de suppression du vol avec l'id : " + id);
+
+            session.getTransaction().rollback();
+        }
+    }
+
+    public void updateVol(Vol vol) {
+        try {
+            session.beginTransaction();
+
+            Vol v1 = session.get(Vol.class, vol.getIdVol());
+            v1.setHeureDepart(vol.getHeureDepart());
+            v1.setDateDepart(vol.getDateDepart());
+            v1.setHeureArrivee(vol.getHeureArrivee());
+            v1.setDateArrivee(vol.getDateArrivee());
+            
+            session.update(v1);
+
+            logger.debug("Mise à jour du vol avec l'ID: " + vol.getIdVol());
+
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            logger.debug("Erreur lors de la mise à jour du vol avec l'ID: " + vol.getIdVol());
+
+            session.getTransaction().rollback();
+        }
+    }
+
+    public Vol getVolById(int id) {
+        Vol v1 = null;
+        try {
+            session.beginTransaction();
+
+            v1 = session.get(Vol.class, id);
+
+            logger.debug("Récupération du vol avec l'id : " + id);
+
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            logger.debug("Erreur de récupération du vol avec l'id : " + id);
+
+            session.getTransaction().rollback();
+        }
+        return v1;
+    }
 
 	public void creerVol(LocalDate dateDepart, String heureDepart, LocalDate dateArrivee, String heureArrivee, String nomCompagnie,
 						String nomAeroportDepart, String nomAeroportArrivee, String nomVilleDepart, String nomVilleArrivee, String escale,
@@ -123,5 +214,47 @@ public class TraitementBDD {
 		}
 	}
 	
+	public Vol getVol(int idVol) {
+	    Vol vol = null;
+	    try {
+	        session.beginTransaction();
+	        
+	        logger.debug("Début des transactions pour récupérer un vol");
+	        
+	        vol = session.get(Vol.class, idVol);
+	        
+	        session.getTransaction().commit();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        
+	        logger.error("Erreur lors de la récupération du vol");
+	        
+	        session.getTransaction().rollback();
+	    }
+	    
+	    return vol;
+	}
 	
+	public Client getClient(int idClient)
+	{
+	    Client client  = null;
+	    try {
+	        session.beginTransaction();
+	        
+	        logger.debug("Début des transactions pour récupérer un client");
+	        
+	        client = session.get(Client.class, idClient);
+	        
+	        session.getTransaction().commit();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        
+	        logger.error("Erreur lors de la récupération du client");
+	        
+	        session.getTransaction().rollback();
+	    }
+	    
+	    return client;
+	}
+
 }
