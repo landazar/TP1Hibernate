@@ -154,7 +154,7 @@ public class TraitementBDD {
 
 	public void creerVol(LocalDate dateDepart, String heureDepart, LocalDate dateArrivee, String heureArrivee, String nomCompagnie,
 						String nomAeroportDepart, String nomAeroportArrivee, String nomVilleDepart, String nomVilleArrivee, String escale,
-						String heureD, String heureA, String aeroportEscale)
+						String heureD, String heureA, String aeroportEscale, String villeE)
 	{
 		/**
 		 * Fonction a amélioré en mettant une liste d'aéroport et une liste de compagnie pour qu'on puisse choisir
@@ -180,25 +180,34 @@ public class TraitementBDD {
 			
 			Ville va1 = new Ville(nomVilleArrivee);
 			
+			//A modifier pour que les jonctions de table infosEscales et les aeroport se remplissent car il y a une erreur
+			
 //			if(escale.equals("Escale"))
 //			{
-//				listeInfos = List.of(new InfosEscale(heureA, heureD));
-//				listeAeroportA = List.of(new AeroportArrivee(aeroportEscale));
-//				listeAeroportD = List.of(new AeroportDepart(aeroportEscale));
-//				listeInfos.setListeAeroportArrivee(listeAeroportA);
-//				ad2.setListeInfos(listeInfos);
-//				aa2.setListeInfos(listeInfos);
+//				InfosEscale ie1 = new InfosEscale(heureA, heureD);
+//				Ville ve1 = new Ville(villeE);
+//				AeroportArrivee aa2 = new AeroportArrivee(aeroportEscale);
+//				listeAeroportA = List.of(aa2);
+//				aa2.setVille(ve1);
+//				AeroportDepart ad2 = new AeroportDepart(aeroportEscale);
+//				listeAeroportD = List.of(ad2);
+//				ad2.setVille(ve1);
+//				ie1.setListeAeroportDepart(listeAeroportD);
+//				ie1.setListeAeroportArrivee(listeAeroportA);
+//				listeInfos = List.of(ie1);
 //				
 //				v1.setListeInfos(listeInfos);
 //			}
 			
-			v1.setListeCompagnie(listeCompagnie);
 			
-			v1.setAeroportArrivee(aa1);
-			v1.setAeroportDepart(ad1);
 			
 			aa1.setVille(va1);
 			ad1.setVille(vd1);
+			v1.setListeCompagnie(listeCompagnie);
+			v1.setAeroportArrivee(aa1);
+			v1.setAeroportDepart(ad1);
+			
+			
 			
 			session.save(v1);
 			

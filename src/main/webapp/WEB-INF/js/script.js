@@ -12,6 +12,13 @@ function afficherEscale()
 	
 	type.appendChild(aeroportE);
 	
+	var villeE = document.createElement("input");
+	villeE.type = "text";
+	villeE.name = "villeE";
+	villeE.placeholder = "Ville d'escale";
+	
+	type.appendChild(villeE);
+	
 	var heureD = document.createElement("input");
 	heureD.type = "text";
 	heureD.placeholder = "Heure de départ";
