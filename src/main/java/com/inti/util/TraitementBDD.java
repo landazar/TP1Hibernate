@@ -34,6 +34,7 @@ public class TraitementBDD {
 			
 			session.beginTransaction();	
 			listeReservation = session.createNativeQuery("select * from Reservation", Reservation.class).list();
+			System.out.println(listeReservation);
 			logger.debug("recuperation de la liste des résérvations");
 			session.getTransaction().commit();
 			

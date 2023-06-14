@@ -16,8 +16,8 @@ public class Client {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idClient;
-	private String Prénom;
-	private String Nom;
+	private String prenom;
+	private String nom;
 	private String Adresse;
 	private int telephone;
 	private String email;
@@ -29,20 +29,20 @@ public class Client {
 		super();
 	}
 
-	public Client(String prénom, String nom, String adresse, int telephone, String email) {
+	public Client(String prenom, String nom, String adresse, int telephone, String email) {
 		super();
-		Prénom = prénom;
-		Nom = nom;
+		this.prenom = prenom;
+		this.nom = nom;
 		Adresse = adresse;
 		this.telephone = telephone;
 		this.email = email;
 	}
 
-	public Client(int idClient, String prénom, String nom, String adresse, int telephone, String email) {
+	public Client(int idClient, String prenom, String nom, String adresse, int telephone, String email) {
 		super();
 		this.idClient = idClient;
-		Prénom = prénom;
-		Nom = nom;
+		this.prenom = prenom;
+		this.nom = nom;
 		Adresse = adresse;
 		this.telephone = telephone;
 		this.email = email;
@@ -56,20 +56,20 @@ public class Client {
 		this.idClient = idClient;
 	}
 
-	public String getPrénom() {
-		return Prénom;
+	public String getPrenom() {
+		return prenom;
 	}
 
-	public void setPrénom(String prénom) {
-		Prénom = prénom;
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}
 
 	public String getNom() {
-		return Nom;
+		return nom;
 	}
 
 	public void setNom(String nom) {
-		Nom = nom;
+		this.nom = nom;
 	}
 
 	public String getAdresse() {
@@ -106,7 +106,7 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return "Client [idClient=" + idClient + ", Prénom=" + Prénom + ", Nom=" + Nom + ", Adresse=" + Adresse
+		return "Client [idClient=" + idClient + ", prenom=" + prenom + ", Nom=" + nom + ", Adresse=" + Adresse
 				+ ", telephone=" + telephone + ", email=" + email + "]";
 	}
 	

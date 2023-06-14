@@ -15,30 +15,31 @@ crossorigin="anonymous">
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">numéro de réservation</th>
+      <th scope="col">id de réservation</th>
+      <th scope="col">numero de reservation</th>
       <th scope="col">date de réservation</th>
       <th scope="col">numéro de vol</th>
       <th scope="col">numéro de client</th>
       <th scope="col">nom</th>
       <th scope="col">prenom</th>
+      <th scope="col">action</th>
     </tr>
   </thead>
   
- 
+ <c:forEach items="${ listeReservations }" var="reservation">
 	  <tbody class="table-group-divider">
-	<c:forEach items="listeReservation" var="reservation">
 	    <tr>
-	      <th scope="row">1</th>
-	      <td><c:out value="${ reservation.idReservation }"></c:out></td>
+	      <th scope="row"><c:out value="${ reservation.idReservation }"></c:out></th>
+	      <td><c:out value="${ reservation.numero }"></c:out></td>
 	      <td><c:out value="${ reservation.date }"></c:out></td>
-	      <td><c:out value="${ reservation.date }"></c:out></td>
-	      <td><c:out value="${ reservation.date }"></c:out></td>
-	      <td><c:out value="${ reservation.date }"></c:out></td>
-	      <td><c:out value="${ reservation.date }"></c:out></td>
-	      <td><a href="supprimerReservation?idReservation= ${ reservation.idReservation }"><button type="button" class="btn btn-danger">Supprimer</button></a></td>
+	      <td><c:out value="${ reservation.getVol().idVol}"></c:out></td>
+	      <td><c:out value="${ reservation.getClient().idClient}"></c:out></td>
+	      <td><c:out value="${ reservation.getClient().nom}"></c:out></td>
+	      <td><c:out value="${ reservation.getClient().prenom}"></c:out></td>
+	      <td><a href="supprimerReservation?idReservation=${ reservation.idReservation }"><button type="button" class="btn btn-danger">Supprimer</button></a></td>
 	    </tr>
-	</c:forEach>
 	  </tbody>
+	  </c:forEach>
 </table>
 
 
