@@ -108,5 +108,25 @@ public class TraitementBDD {
 		}
 	}
 	
-	
+	public Vol getVol(int idVol) {
+	    Vol vol = null;
+	    try {
+	        session.beginTransaction();
+	        
+	        logger.debug("Début des transactions pour récupérer un vol");
+	        
+	        vol = session.get(Vol.class, idVol);
+	        
+	        session.getTransaction().commit();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        
+	        logger.error("Erreur lors de la récupération du vol");
+	        
+	        session.getTransaction().rollback();
+	    }
+	    
+	    return vol;
+	}
+
 }
