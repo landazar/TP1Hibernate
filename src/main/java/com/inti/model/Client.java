@@ -36,6 +36,7 @@ public class Client {
 		Adresse = adresse;
 		this.telephone = telephone;
 		this.email = email;
+		
 	}
 
 	public Client(int idClient, String prénom, String nom, String adresse, int telephone, String email) {

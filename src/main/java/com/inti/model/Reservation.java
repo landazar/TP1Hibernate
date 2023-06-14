@@ -35,6 +35,15 @@ public class Reservation {
 	
 	public Reservation() {}
 	
+	
+	
+	public Reservation(LocalDate date) {
+		super();
+		this.date = date;
+	}
+
+
+
 	public Reservation(LocalDate date, int numero) {
 		super();
 		this.date = date;

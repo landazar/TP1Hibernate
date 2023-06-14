@@ -18,7 +18,10 @@
           <a class="nav-link" href="afficherReservation">Afficher les réservations</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="creerRes">Confirmer une réservation</a>
+          <a class="nav-link" href="creerRes">Détails de réservation</a>
+        </li>
+                <li class="nav-item">
+          <a class="nav-link" href="nouvelleRes">Créer une réservation</a>
         </li>
       </ul>
       

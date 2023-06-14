@@ -45,6 +45,20 @@ public class TraitementBDD {
 		return listeReservation;	
 	}
 	
+	public void ajouterReservation(Reservation reservation) {
+	    Session session = HibernateUtil.getSessionFactory().openSession();
+	    try {
+	        session.beginTransaction();
+	        session.save(reservation);
+	        session.getTransaction().commit();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        session.getTransaction().rollback();
+	    } finally {
+	        session.close();
+	    }
+	}
+
 	public void supprimerReservations(int idReservation){
 		try {
 			
