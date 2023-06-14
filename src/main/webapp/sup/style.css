@@ -1,0 +1,32 @@
+/*
+
+a {
+  color: black;
+}
+.form-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.form-overlay form {
+  width: 100%;
+}
+
+.form-overlay form input[type="text"],
+.form-overlay form input[type="submit"] {
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 200px;
+  
+  margin-bottom: 10px;
+}
+
+
+*/
