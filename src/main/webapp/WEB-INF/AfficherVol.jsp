@@ -15,7 +15,7 @@
 <body>
 
 	<!-- Il faudra ajouter des prix et un moyen de paiement lors des réservations -->
-	
+	<!-- Il faudra ajouter l'option pour supprimer des vols -->
 	
 	<%@ include file="/WEB-INF/menu.jsp"%>
 	<h1>Vols disponibles</h1>
