@@ -9,7 +9,7 @@
           <a class="nav-link"  href="creerVol">Créer un Vol</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="afficherUtilisateur">afficher utilisateur</a>
+          <a class="nav-link" href="AfficherVol">Afficher Vols</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="paiement">Paiement</a>

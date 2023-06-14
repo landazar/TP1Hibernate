@@ -45,7 +45,9 @@ public class CreerVolServlet extends HttpServlet {
 					LocalDate.parse(request.getParameter("dateArrivee")), request.getParameter("heureArrivee"),
 					request.getParameter("compagnieA"), request.getParameter("aeroportDepart"), 
 					request.getParameter("aeroportArrivee"), request.getParameter("villeDepart"), 
-					request.getParameter("villeArrivee"));
+					request.getParameter("villeArrivee"), request.getParameter("escale"), 
+					request.getParameter("heureD"), request.getParameter("heureA"), request.getParameter("aeroportE"),
+					request.getParameter("villeE"));
 		
 		response.sendRedirect("creerVol");
 	}
