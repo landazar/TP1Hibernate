@@ -1,51 +1,65 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Créer une nouvelle réservation</title>
+    <meta charset="UTF-8">
+    <title>Informations du vol</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="script.js"></script>
 </head>
 <body>
-
-<form>
-  <div class="mb-3">
-    <label name="nom" class="form-label">Nom</label>
-    <input type="text" class="form-control" id="nom">
-    <div class="form-text"></div>
-  </div>
-  <div class="mb-3">
-    <label name="email" class="form-label">Email</label>
-    <input type="email" class="form-control" id="email">
-  </div>
-  <div class="mb-3">
-    <label name="tel" class="form-label">Téléphone</label>
-    <input type="tel" class="form-control" id="tel">
-  </div>
-    <div class="mb-3">
-    <label name="départ" class="form-label">Ville de départ</label>
-    <input type="text" class="form-control" id="départ">
-  </div>
-    <div class="mb-3">
-    <label name="arrivée" class="form-label">Ville d'arrivée</label>
-    <input type="text" class="form-control" id="arrivée">
-  </div>
-    <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">First class</label>
-  </div>
-    <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Economy</label>
-  </div>
-    <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Business</label>
-  </div>
-  
-  <button type="submit" class="btn btn-primary">Soumettre</button>
-    <button type="submit" class="btn btn-red">Annuler</button>
-</form>
-
+    <h1>Informations du vol</h1>
+    
+    <table>
+        <tr>
+            <th>ID du vol</th>
+            <th>Date de départ</th>
+            <th>Heure de départ</th>
+            <th>Date d'arrivée</th>
+            <th>Heure d'arrivée</th>
+        </tr>
+        <tr>
+            <td>${vol.idVol}</td>
+            <td>${vol.dateDepart}</td>
+            <td>${vol.heureDepart}</td>
+            <td>${vol.dateArrivee}</td>
+            <td>${vol.heureArrivee}</td>
+        </tr>
+    </table>
+    
+    <br>
+    
+    <h2>Compagnies aériennes</h2>
+    <ul>
+        <c:forEach var="compagnie" items="${vol.listeCompagnie}">
+            <li>${compagnie.nom}</li>
+        </c:forEach>
+    </ul>
+    
+    <br>
+    
+    <h2>Aéroport de départ</h2>
+    <p>${vol.aeroportDepart.nom}</p>
+    
+    <br>
+    
+    <h2>Aéroport d'arrivée</h2>
+    <p>${vol.aeroportArrivee.nom}</p>
+    
+    <br>
+    
+    <h2>Informations sur les escales</h2>
+    <ul>
+        <c:forEach var="infoEscale" items="${vol.listeInfos}">
+            <li>${infoEscale.description}</li>
+        </c:forEach>
+    </ul>
+    
+    <br>
+    
+    <form method="post">
+        <button type="submit">Confirmer la réservation</button>
+    </form>
 </body>
 </html>

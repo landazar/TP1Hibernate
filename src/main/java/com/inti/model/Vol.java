@@ -2,6 +2,8 @@ package com.inti.model;
 
 import java.time.LocalDate;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,20 +30,20 @@ public class Vol {
 	 @OneToMany(mappedBy = "vol")
 	private List<Reservation> listeReservation;
 	 
-	 @ManyToMany()
+	 @ManyToMany(cascade = CascadeType.ALL)
 	 @JoinTable(name = "vol_compagnie",
 			 	joinColumns= @JoinColumn(name = "idVol"),
 			 	inverseJoinColumns= @JoinColumn (name="idCompagnieAerienne"))
 	private List<CompagnieAerienne> listeCompagnie;
 	 
-	 @ManyToOne
+	 @ManyToOne(cascade = CascadeType.ALL)
 	 @JoinColumn(name = "idAeroportA")
 	private AeroportArrivee aeroportArrivee;
-	 @ManyToOne
+	 @ManyToOne(cascade = CascadeType.ALL)
 	 @JoinColumn(name = "idAeroportD")
 	private AeroportDepart aeroportDepart;
 	 
-	 @ManyToMany()
+	 @ManyToMany
 	 @JoinTable(name = "vol_compagnie",
 	 	joinColumns= @JoinColumn(name = "idVol"),
 	 	inverseJoinColumns= @JoinColumn (name="idInfosEscale"))
