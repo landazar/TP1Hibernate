@@ -1,6 +1,8 @@
 package com.inti.model;
 
 import java.time.LocalDate;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,19 +19,22 @@ import com.inti.util.TraitementBDD;
 @Table
 public class Reservation {
 
+	/**
+	 * numero a supprimer et a remplacer par IdReservation seulement
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idReservation;
 	private LocalDate date;
 	private int numero;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idVol")
 	private Vol vol;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idClient")
 	private Client client;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idPassager")
 	private Passager passager;
 	

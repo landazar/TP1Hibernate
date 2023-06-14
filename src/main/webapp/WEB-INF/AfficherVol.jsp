@@ -13,6 +13,10 @@
 <title>Afficher un vol</title>
 </head>
 <body>
+
+	<!-- Il faudra ajouter des prix et un moyen de paiement lors des réservations -->
+	
+	
 	<%@ include file="/WEB-INF/menu.jsp"%>
 	<h1>Vols disponibles</h1>
 
@@ -58,6 +62,7 @@
 										<span class="card-title mb-3"><c:out value="${ listeV.get(i).getDateArrivee() }" /></span>
 										<span class="card-title mb-3"><c:out value="${ listeV.get(i).getHeureArrivee() }" /></span>
 									</p>
+									<a href="nouvelleRes?idVol=${ listeV.get(i).idVol }"><button type="button" class="btn btn-success">Réserver</button></a>
 								</div>
 							</div>
 						</div>
@@ -98,6 +103,7 @@
 										<span class="card-title mb-3"><c:out value="${ listeV.get(i + 1).getDateArrivee() }" /></span>
 										<span class="card-title mb-3"><c:out value="${ listeV.get(i + 1).getHeureArrivee() }" /></span>
 									</p>
+									<a href="nouvelleRes?idVol=${ listeV.get(i + 1).idVol }"><button type="button" class="btn btn-success">Réserver</button></a>
 								</div>
 							</div>
 						</div>
@@ -138,6 +144,7 @@
 										<span class="card-title mb-3"><c:out value="${ listeV.get(i + 2).getDateArrivee() }" /></span>
 										<span class="card-title mb-3"><c:out value="${ listeV.get(i + 2).getHeureArrivee() }" /></span>
 									</p>
+									<a href="nouvelleRes?idVol=${ listeV.get(i + 2).idVol }"><button type="button" class="btn btn-success">Réserver</button></a>
 								</div>
 							</div>
 						</div>

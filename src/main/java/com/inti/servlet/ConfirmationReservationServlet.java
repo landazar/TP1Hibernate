@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ConfirmationReservationServlet
  */
-@WebServlet("/ConfirmationReservationServlet")
+@WebServlet("/ConfirmationReservation")
 public class ConfirmationReservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,7 +27,7 @@ public class ConfirmationReservationServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setAttribute("idRes", request.getAttribute("idRes"));
+		this.getServletContext().getRequestDispatcher("/WEB-INF/confirmationReservation.jsp").forward(request, response);
 		
 	}
 

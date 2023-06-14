@@ -51,7 +51,7 @@ public class TraitementBDD {
 	}
 	
 	public void ajouterReservation(Reservation reservation) {
-	    Session session = HibernateUtil.getSessionFactory().openSession();
+	   
 	    try {
 	        session.beginTransaction();
 	        session.save(reservation);

@@ -12,16 +12,7 @@
           <a class="nav-link" href="AfficherVol">Afficher Vols</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="paiement">Paiement</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="afficherReservation">Afficher les réservations</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="creerRes">Détails de réservation</a>
-        </li>
-                <li class="nav-item">
-          <a class="nav-link" href="nouvelleRes">Créer une réservation</a>
         </li>
       </ul>
       

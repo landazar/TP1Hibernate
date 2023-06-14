@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Session;
 
 import com.inti.model.Client;
+import com.inti.model.Passager;
 import com.inti.model.Reservation;
+import com.inti.model.Vol;
 import com.inti.util.HibernateUtil;
 import com.inti.util.TraitementBDD;
 
@@ -45,6 +47,8 @@ public class NouvelleReservationServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// A mettre dans traitement BDD
+		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			
@@ -59,20 +63,29 @@ public class NouvelleReservationServlet extends HttpServlet {
 	        String email = request.getParameter("email");
 	        String vol = request.getParameter("vol");
 			
+	        Reservation reservation1 = new Reservation(LocalDate.now());
+	        
 	        Client client1 = new Client(prenom, nom, adresse, Integer.parseInt(telephone), email);
-			session.getTransaction().commit();
+	        
+	        reservation1.setClient(client1);
+	        
+	        Passager p1 = new Passager(nom, prenom);
+	        
+	        reservation1.setPassager(p1);
+	        
+			Vol v1 = session.load(Vol.class, Integer.parseInt(vol));
 			
-			client1.setListeReservation(new ArrayList<>());
+			reservation1.setVol(v1);
 			
-			Reservation reservation1 = new Reservation(LocalDate.now());
 			
-			client1.getListeReservation().add(reservation1);
 			
-			TraitementBDD tbdd = new TraitementBDD();
-			tbdd.ajouterReservation(reservation1);
+		
 			
-						
-			this.getServletContext().getRequestDispatcher("/WEB-INF/afficherReservation.jsp").forward(request, response);
+			session.save(reservation1);
+		
+			
+			session.getTransaction().commit();			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/creerReservation.jsp").forward(request, response);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
