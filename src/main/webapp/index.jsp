@@ -18,11 +18,11 @@
 <%@ include file="/WEB-INF/menu.jsp" %>
 
 <!--  faut rajouter au menu la possibilité de revenir ici. -->
-<!--  et étoffé la page -->
+<!--  et étoffé la page.   et mettre mieu que id = conttttt1-->
 
-  <div class="container_index">
-    <img src="sup/avion4.jpg" class="background-image_index" alt="Background Image">
-    <div class="form-container_index">
+  <div class="container"  id="conttttt1">
+    <img src="sup/avion4.jpg" class="background-image" id="conttttt2" alt="Background Image">
+    <div class="form-container" id="conttttt3">
       <form method="post" action="com/inti/servlet/RechercherVols">
         <div class="row mb-3">
           <div class="col">

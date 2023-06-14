@@ -1,9 +1,9 @@
-    .container_index {
+    #conttttt1 {
       position: relative;
       display: flex;
       justify-content: flex-start;
     }
-    .background-image_index  {
+    #conttttt2 {
       position: absolute;
       top: 0;
       left: 0;
@@ -11,7 +11,7 @@
       z-index: -1;
       opacity: 0.8; /* Réglez l'opacité selon vos préférences */
     }
-    .form-container_index  {
+    #conttttt3 {
       max-width: 500px; /* Définissez la largeur maximale du formulaire */
       padding: 10px;
       background-color: rgba(255, 255, 255, 0.8); /* Réglez la couleur de fond selon vos préférences */
