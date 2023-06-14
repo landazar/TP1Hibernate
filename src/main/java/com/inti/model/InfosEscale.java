@@ -1,6 +1,8 @@
 package com.inti.model;
 
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,13 +27,13 @@ public class InfosEscale {
 	 	inverseJoinColumns= @JoinColumn (name="idVol"))
 	private List<Vol> listeVol;
 	
-	@ManyToMany()
+	@ManyToMany(cascade = CascadeType.ALL)
 	 @JoinTable(name = "AeroportA_infosEscale",
 	 	joinColumns= @JoinColumn(name = "idInfosEscale"),
 	 	inverseJoinColumns= @JoinColumn (name="idAeroportA"))
 	private List<AeroportArrivee> listeAeroportArrivee;
 	
-	@ManyToMany()
+	@ManyToMany(cascade = CascadeType.ALL)
 	 @JoinTable(name = "AeroportD_infosEscale",
 	 	joinColumns= @JoinColumn(name = "idInfosEscale"),
 	 	inverseJoinColumns= @JoinColumn (name="idAeroportD"))
