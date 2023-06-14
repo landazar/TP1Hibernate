@@ -66,7 +66,7 @@ public class CreerReservationServlet extends HttpServlet {
 			
 			session.beginTransaction();
 			
-			logger.debug("Début des transactions pour insérer un utilisateur");
+			logger.debug("Début des transactions pour insérer un client");
 			
 			Client c1 = new Client(request.getParameter("prenom"), request.getParameter("nom"), 
 					request.getParameter("adresse"), Integer.parseInt(request.getParameter("tel")),  request.getParameter("email"));
@@ -81,7 +81,7 @@ public class CreerReservationServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			
-			logger.error("Erreur d'enregistrement d'un utilisateur !");
+			logger.error("Erreur d'enregistrement d'une réservation !");
 			
 			session.getTransaction().rollback();
 		}
