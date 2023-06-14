@@ -14,6 +14,9 @@
         <li class="nav-item">
           <a class="nav-link" href="paiement">Paiement</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="afficherReservation">Afficher les réservations</a>
+        </li>
       </ul>
       
     </div>

@@ -19,6 +19,7 @@ public class Reservation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idReservation;
 	private LocalDate date;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int numero;
 
 	@ManyToOne
