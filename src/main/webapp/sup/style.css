@@ -1,32 +1,27 @@
-/*
+    .container_index {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+    }
+    .background-image_index  {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: -1;
+      opacity: 0.8; /* Réglez l'opacité selon vos préférences */
+    }
+    .form-container_index  {
+      max-width: 500px; /* Définissez la largeur maximale du formulaire */
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.8); /* Réglez la couleur de fond selon vos préférences */
+      border-radius: 5px;
+      margin-top: 7%; /* Ajustez la marge supérieure selon vos préférences */
+      margin-left: 45%;
+    }
+    
+    .input_index {
+    	width: 100%;
+    }
 
-a {
-  color: black;
-}
-.form-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: auto;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-start;
-}
-
-.form-overlay form {
-  width: 100%;
-}
-
-.form-overlay form input[type="text"],
-.form-overlay form input[type="submit"] {
-  width: 100%;
-  box-sizing: border-box;
-  max-width: 200px;
-  
-  margin-bottom: 10px;
-}
-
-
-*/
+    

@@ -103,6 +103,40 @@ public class TraitementBDD {
 
         return listeV;
     }
+    
+    
+	public List<Vol> getChercherVols(String depart, String arrive , String dateDepart ) {
+		   
+		List<Vol> listeCV = new ArrayList<>();
+
+	    try {
+	        session.beginTransaction();
+	        
+	        String requeteChercher = "SELECT * FROM vol WHERE " +
+	        	    "(idAeroportD IN (SELECT idAeroport FROM aeroportdepart WHERE idVille IN " +
+	        	    "(SELECT idVille FROM ville WHERE nom = '" + depart + "')) AND " +
+	        	    "(idAeroportA IN (SELECT idAeroport FROM aeroportarrivee WHERE idVille IN " +
+	        	    "(SELECT idVille FROM ville WHERE nom = '" + arrive + "'))) AND " +
+	        	    "dateDepart = '" + dateDepart + "') ORDER BY dateDepart, heureDepart ;";
+	        
+	        listeCV = session.createNativeQuery(requeteChercher, Vol.class).list();
+	        
+	        logger.debug("index : Récupération de la liste des Vols de " + depart + " à " + arrive + " du " + dateDepart);
+	        
+	        session.getTransaction().commit();
+
+	    } catch (Exception e) {
+            e.printStackTrace();
+            logger.debug("index : Erreur de récupération des vols de getChercherVols");
+            session.getTransaction().rollback();
+	    } 
+
+	    return listeCV;
+	}
+    
+    
+    
+    
 
     public void deleteVol(int id) {
         try {
