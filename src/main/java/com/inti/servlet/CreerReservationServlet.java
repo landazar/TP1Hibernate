@@ -35,7 +35,7 @@ public class CreerReservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private Logger logger = LogManager.getLogger();
-       
+	TraitementBDD tbdd = new TraitementBDD();   
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -59,7 +59,7 @@ public class CreerReservationServlet extends HttpServlet {
 			
 			session.beginTransaction();
 			
-			TraitementBDD tbdd = new TraitementBDD();
+
 			Vol vol = tbdd.getVol(Integer.parseInt(request.getParameter("idVol")));
 			
 			request.setAttribute("vol", vol);
@@ -95,12 +95,17 @@ public class CreerReservationServlet extends HttpServlet {
 			
 			logger.debug("Début des transactions pour insérer un client");
 			
+			Client client1 = tbdd.getClient(Integer.parseInt(request.getParameter("idClient")));
 			
 			Reservation r1 = new Reservation(LocalDate.now(), Integer.parseInt( request.getParameter("idVol")));
 		
+			client1.getListeReservation().add(r1);
 			
-			
+				
 			session.getTransaction().commit();
+			
+			request.setAttribute("idRes", r1.getIdReservation());			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/confirmationReservation.jsp").forward(request, response);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

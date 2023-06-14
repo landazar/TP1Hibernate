@@ -13,6 +13,7 @@ import org.hibernate.Session;
 import com.inti.model.Reservation;
 import com.inti.model.AeroportArrivee;
 import com.inti.model.AeroportDepart;
+import com.inti.model.Client;
 import com.inti.model.CompagnieAerienne;
 import com.inti.model.Ville;
 import com.inti.model.Vol;
@@ -128,5 +129,29 @@ public class TraitementBDD {
 	    
 	    return vol;
 	}
+	
+	public Client getClient(int idClient)
+	{
+	    Client client  = null;
+	    try {
+	        session.beginTransaction();
+	        
+	        logger.debug("Début des transactions pour récupérer un client");
+	        
+	        client = session.get(Client.class, idClient);
+	        
+	        session.getTransaction().commit();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        
+	        logger.error("Erreur lors de la récupération du client");
+	        
+	        session.getTransaction().rollback();
+	    }
+	    
+	    return client;
+	}
+
+
 
 }
